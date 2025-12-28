@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="shark_gray">#FF808080</color>
+
+    <!-- Brand / primary colors (WhatsApp-like, tweak if needed) -->
+    <color name="colorPrimary">#075E54</color>        <!-- App bar / status bar [web:31] -->
+    <color name="colorPrimaryVariant">#128C7E</color> <!-- Darker variant / headers [web:30][web:31] -->
+    <color name="colorAccent">#25D366</color>         <!-- FAB / main action [web:30][web:31] -->
+
+    <!-- Chat UI colors -->
+    <color name="colorChatBackground">#ECE5DD</color> <!-- Chat screen background [web:31][web:39] -->
+    <color name="colorChatBubbleOutgoing">#DCF8C6</color> <!-- Sent bubble [web:31][web:39] -->
+    <color name="colorChatBubbleIncoming">#FFFFFF</color>  <!-- Received bubble -->
+
+    <!-- Text colors -->
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#B3FFFFFF</color>
+    <color name="colorTextPrimaryOnChat">#202124</color>
+    <color name="colorTextSecondaryOnChat">#757575</color>
+
+    <!-- Divider / stroke -->
+    <color name="colorDivider">#1F000000</color>
+
+    <!-- Status bar / nav bar -->
+    <color name="colorStatusBar">#064C46</color>
+    <color name="colorNavigationBar">#000000</color>
+
+    <!-- Night theme -->
+    <color name="colorPrimaryNight">#042F2A</color>       <!-- Custom darker variant (tweakable) -->
+    <color name="colorPrimaryNightVariant">#064C46</color>
+    <color name="colorChatBackgroundNight">#121B22</color> <!-- WhatsApp-like dark chat bg (approx) [web:39][web:47] -->
+
+
+
+</resources>

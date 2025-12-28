@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.EmpedanceMachineTask" parent="Theme.MaterialComponents.DayNight.NoActionBar" />
+    <style name="NormalTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>     <!-- Bold -->
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.05</item>
+        <item name="android:textAllCaps">false</item>  <!-- No ALL CAPS -->
+    </style>
+
+
+
+</resources>

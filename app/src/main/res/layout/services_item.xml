@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardService"
+        android:layout_width="140dp"
+        android:layout_height="100dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0.5dp"
+        app:strokeColor="@color/teal_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivService"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/tvServiceName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Service Name"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="@+id/cardService"
+        app:layout_constraintStart_toStartOf="@+id/cardService"
+        app:layout_constraintTop_toBottomOf="@+id/cardService" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

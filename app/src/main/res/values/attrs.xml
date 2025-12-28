@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ShimmerLayout">
+        <attr name="shimmerBaseColor" format="color|reference" />
+        <attr name="shimmerHighlightColor" format="color|reference" />
+        <attr name="shimmerWidth" format="dimension" />
+        <attr name="shimmerHeight" format="dimension" />
+        <attr name="shimmerDuration" format="integer" />
+        <attr name="shimmerAngle" format="float" />
+    </declare-styleable>
+</resources>
