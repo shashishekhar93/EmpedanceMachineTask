@@ -45,18 +45,6 @@ class ServicesAdapter @Inject constructor(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(service: Children) {
             binding.tvServiceName.text = service.name
-
-            // Set rounded corners for top-left and bottom-right only on the CardView
-            val radius = 70f // Adjust radius as needed
-            val shapeAppearanceModel = ShapeAppearanceModel()
-                .toBuilder()
-                .setTopLeftCorner(CornerFamily.ROUNDED, radius)
-                .setBottomRightCorner(CornerFamily.ROUNDED, radius)
-                .setTopRightCorner(CornerFamily.ROUNDED, 0f)
-                .setBottomLeftCorner(CornerFamily.ROUNDED, 0f)
-                .build()
-
-            binding.cardService.shapeAppearanceModel = shapeAppearanceModel
             Glide.with(binding.ivService)
                 .load(service.iconUrl)
                 .placeholder(R.drawable.ic_menu_gallery)
