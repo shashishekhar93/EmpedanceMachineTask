@@ -36,8 +36,8 @@ class CategoriesAdapter @Inject constructor(
             appUtils.loadSvgOrImage(
                 context = binding.root.context,
                 imageView = binding.ivCategory,
-                url = category.mobileIconUrl,
-                placeholder = R.drawable.ic_drill // Provide a default placeholder
+                url = category.iconUrl,
+                placeholder = R.drawable.ic_drill
             )
         }
     }
