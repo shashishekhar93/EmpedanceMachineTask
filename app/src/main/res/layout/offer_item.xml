@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="16dp"
     app:cardBackgroundColor="#FFF8E1"
-    app:cardCornerRadius="24dp"
+    android:background="@drawable/adjscent_corners"
     app:cardElevation="0dp"
     app:strokeWidth="0dp">
 
@@ -38,7 +38,7 @@
             android:text="Immediate help for home emergencies—quick, reliable, and professional."
             android:textColor="@color/shark_gray"
             android:textSize="12.5sp"
-            app:layout_constraintEnd_toStartOf="@+id/ivOfferImage"
+            app:layout_constraintEnd_toStartOf="@+id/imageRoot"
             app:layout_constraintStart_toStartOf="@+id/tvOfferTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvOfferTitle" />
 
@@ -66,16 +66,25 @@
             app:strokeColor="#D87831"
             app:strokeWidth="1dp" />
 
-        <ImageView
-            android:id="@+id/ivOfferImage"
+        <LinearLayout
+            android:id="@+id/imageRoot"
             android:layout_width="120dp"
-            android:layout_height="0dp"
-            android:layout_margin="12dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="0dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/adjscent_corners"
+            android:clipToOutline="true"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivOfferImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

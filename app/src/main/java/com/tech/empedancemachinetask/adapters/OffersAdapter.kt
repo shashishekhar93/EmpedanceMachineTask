@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.tech.empedancemachinetask.R
 import com.tech.empedancemachinetask.databinding.OfferItemBinding
 import com.tech.empedancemachinetask.models.Offer
@@ -31,7 +33,17 @@ class OffersAdapter @Inject constructor() : ListAdapter<Offer, OffersAdapter.Off
             binding.tvOfferTitle.text = offer.title
             binding.tvOfferDescription.text = offer.description
             binding.btnBookNow.text = offer.buttonText
-            
+
+            val radius = 70f // Adjust radius as needed
+            val shapeAppearanceModel = ShapeAppearanceModel()
+                .toBuilder()
+                .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+                .setBottomRightCorner(CornerFamily.ROUNDED, radius)
+                .setTopRightCorner(CornerFamily.ROUNDED, 0f)
+                .setBottomLeftCorner(CornerFamily.ROUNDED, 0f)
+                .build()
+            binding.cardOffer.shapeAppearanceModel = shapeAppearanceModel
+
             Glide.with(binding.ivOfferImage)
                 .load(offer.imageUrl)
                 .placeholder(R.drawable.ic_launcher_background)

@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.tech.empedancemachinetask.databinding.ReviewItemBinding
 import com.tech.empedancemachinetask.models.Review
 import javax.inject.Inject
@@ -32,6 +34,16 @@ class ReviewsAdapter @Inject constructor() :
             binding.tvReviewContent.text = review.content
             binding.tvReviewerName.text = review.reviewerName
             binding.tvReviewerLocation.text = review.reviewerLocation
+
+            val radius = 70f // Adjust radius as needed
+            val shapeAppearanceModel = ShapeAppearanceModel()
+                .toBuilder()
+                .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+                .setBottomRightCorner(CornerFamily.ROUNDED, radius)
+                .setTopRightCorner(CornerFamily.ROUNDED, 0f)
+                .setBottomLeftCorner(CornerFamily.ROUNDED, 0f)
+                .build()
+            binding.reviewCard.shapeAppearanceModel=shapeAppearanceModel
         }
     }
 
