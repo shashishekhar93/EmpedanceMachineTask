@@ -10,6 +10,9 @@ import com.tech.empedancemachinetask.R
 import androidx.core.view.size
 import androidx.core.view.get
 
+/*this is the example of extension function which is offered by kotlin
+* allow you to add new functions to an existing class without modifying its source code,
+*  using inheritance, or applying complex design patterns*/
 fun ComponentActivity.setupMainToolbar(
     toolMenu: Int? = null,
     toolbar: MaterialToolbar,

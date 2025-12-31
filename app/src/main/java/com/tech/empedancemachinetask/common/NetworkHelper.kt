@@ -18,25 +18,31 @@ class NetworkHelper @Inject constructor(
     fun isInternetPermissionGranted(): Boolean {
         return context.checkSelfPermission(android.Manifest.permission.INTERNET) == PackageManager.PERMISSION_GRANTED
     }
+    
+    fun isNetworkConnected(): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return isNetworkAvailable(connectivityManager)
+    }
+
     fun observeNetworkStatus(): Flow<Boolean> = callbackFlow {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         
         val callback = object : ConnectivityManager.NetworkCallback() {
-            override fun onAvailable(network: Network) {
-                trySend(true)
+            // We rely on onCapabilitiesChanged for internet connectivity updates
+            override fun onCapabilitiesChanged(network: Network, networkCapabilities: NetworkCapabilities) {
+                super.onCapabilitiesChanged(network, networkCapabilities)
+                val hasInternet = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                trySend(hasInternet)
             }
 
             override fun onLost(network: Network) {
+                super.onLost(network)
                 trySend(false)
             }
             
             override fun onUnavailable() {
+                super.onUnavailable()
                 trySend(false)
-            }
-            
-            override fun onCapabilitiesChanged(network: Network, networkCapabilities: NetworkCapabilities) {
-                val hasInternet = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-                trySend(hasInternet)
             }
         }
 

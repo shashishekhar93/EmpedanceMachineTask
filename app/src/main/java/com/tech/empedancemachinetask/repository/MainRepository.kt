@@ -10,12 +10,18 @@ import javax.inject.Singleton
 @Singleton
 class MainRepository @Inject constructor(private val apiInterface: ApiInterface) {
 
+    private var cachedCategories: CategoryResponse? = null
+    private var cachedRoots: RootResponse? = null
 
-    suspend fun getCategories(): ApiResult<CategoryResponse> {
+    suspend fun getCategories(forceRefresh: Boolean = false): ApiResult<CategoryResponse> {
+        if (!forceRefresh && cachedCategories != null) {
+            return ApiResult.Success(cachedCategories!!)
+        }
         return try {
             val response = apiInterface.getCategories()
             if (response.isSuccessful && response.body() != null) {
-                ApiResult.Success(response.body()!!)
+                cachedCategories = response.body()
+                ApiResult.Success(cachedCategories!!)
             } else {
                 ApiResult.Error(response.message() ?: "Unknown Error")
             }
@@ -25,11 +31,15 @@ class MainRepository @Inject constructor(private val apiInterface: ApiInterface)
     }
 
 
-    suspend fun getRoots(): ApiResult<RootResponse> {
+    suspend fun getRoots(forceRefresh: Boolean = false): ApiResult<RootResponse> {
+        if (!forceRefresh && cachedRoots != null) {
+            return ApiResult.Success(cachedRoots!!)
+        }
         return try {
             val response = apiInterface.getServices()
             if (response.isSuccessful && response.body() != null) {
-                ApiResult.Success(response.body()!!)
+                cachedRoots = response.body()
+                ApiResult.Success(cachedRoots!!)
             } else {
                 ApiResult.Error(response.message() ?: "Unknown Error")
             }

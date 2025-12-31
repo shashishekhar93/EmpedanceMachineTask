@@ -1,5 +1,6 @@
 package com.tech.empedancemachinetask.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,9 +9,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.tech.empedancemachinetask.R
 import com.tech.empedancemachinetask.adapters.AcServicesAdapter
 import com.tech.empedancemachinetask.adapters.CategoriesAdapter
@@ -24,6 +29,7 @@ import com.tech.empedancemachinetask.models.Review
 import com.tech.empedancemachinetask.sealed_classes.ApiResult
 import com.tech.empedancemachinetask.viewmodels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -261,6 +267,24 @@ class HomeFragment : Fragment() {
                 else -> {}
             }
         }
+
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiEvent.collect { message ->
+                    showSnackBar(message)
+                }
+            }
+        }
+    }
+
+    fun showSnackBar(message: String) {
+        val snackBar = Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+        if (message.contains("No Internet")) {
+            snackBar.setBackgroundTint(Color.RED)
+        } else {
+            snackBar.setBackgroundTint(Color.GREEN)
+        }
+        snackBar.show()
     }
 
     override fun onDestroyView() {
